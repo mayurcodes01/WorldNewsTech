@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>World News</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial;
+    background: linear-gradient(135deg,#050505,#1a1a1a);
+    color: white;
+    animation: fadein 1s ease;
+}
+
+@keyframes fadein {
+    from {opacity:0}
+    to {opacity:1}
+}
+
+header {
+    padding: 40px 20px;
+    text-align: center;
+    background: linear-gradient(120deg,#000,#222);
+    box-shadow: 0 10px 30px rgba(0,0,0,.8);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 42px;
+    background: linear-gradient(to right,#fff,#999);
+    -webkit-background-clip: text;
+background-clip: text;
+
+    color: transparent;
+}
+
+header p {
+    opacity: .7;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+.card {
+    background: linear-gradient(145deg,#0f0f0f,#1a1a1a);
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 0 30px rgba(255,255,255,.03);
+    transition: .3s;
+    animation: slideup .6s ease;
+}
+
+@keyframes slideup {
+    from {transform:translateY(40px);opacity:0}
+    to {transform:translateY(0);opacity:1}
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 40px rgba(255,255,255,.08);
+}
+
+.card h3 {
+    margin-top: 0;
+    background: linear-gradient(to right,#fff,#aaa);
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+}
+
+.card p {
+    opacity: .8;
+    line-height: 1.6;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 18px;
+    border-radius: 30px;
+    background: linear-gradient(135deg,#fff,#777);
+    color: black;
+    text-decoration: none;
+    font-size: 14px;
+    transition: .3s;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255,255,255,.4);
+}
+.github-link {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    padding: 8px 16px;
+    border-radius: 25px;
+    background: linear-gradient(135deg,#fff,#777);
+    color: black;
+    text-decoration: none;
+    font-size: 13px;
+    transition: .3s;
+}
+
+.github-link:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255,255,255,.5);
+}
+
+.footer {
+    text-align: center;
+    padding: 25px;
+    opacity: .4;
+    font-size: 13px;
+}
+.social-links {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    display: flex;
+    gap: 10px;
+}
+
+.social-btn {
+    padding: 8px 16px;
+    border-radius: 25px;
+    background: linear-gradient(135deg,#fff,#777);
+    color: black;
+    text-decoration: none;
+    font-size: 13px;
+    transition: .3s;
+}
+
+.social-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255,255,255,.5);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="social-links">
+        <a class="social-btn" href="https://github.com/mayurcodes01" target="_blank">
+            GitHub
+        </a>
+
+        <a class="social-btn" href="https://www.linkedin.com/in/mayur-dhole-bb60893a5" target="_blank">
+            LinkedIn
+        </a>
+    </div>
+
+    <h1>WORLD NEWS</h1>
+    <p>Technology Headlines</p>
+
+</header>
+
+
+
+<div class="container">
+
+{% for a in articles %}
+
+<div class="card">
+    <h3>{{ a.title }}</h3>
+
+    <p>{{ a.text[:220] }}...</p>
+
+    {% if a.url %}
+        <a class="btn" href="{{ a.url }}" target="_blank">Read Article</a>
+    {% endif %}
+</div>
+
+{% endfor %}
+
+</div>
+
+<div class="footer">
+Created by Mayur D.
+</div>
+
+</body>
+</html>
